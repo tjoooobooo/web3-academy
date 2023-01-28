@@ -4,8 +4,25 @@ pragma solidity ^0.8.0;
 contract Token {
     string public name;
     string public symbol;
-    uint8 public decimals = 18;
-    uint256 public totalSupply;
+    uint public decimals = 18;
+    uint public totalSupply;
+
+    // account balances
+    mapping(address => uint) public balanceOf;
+    // owner => spender => amount<
+    mapping(address => mapping(address => uint256)) public allowance;
+
+    event Transfer(
+        address indexed _from, 
+        address indexed _to, 
+        uint256 _value
+    );
+
+    event Approval(
+        address indexed _owner,
+        address indexed _spender,
+        uint256 _value
+    );
 
     constructor(
         string memory _name,
@@ -15,5 +32,24 @@ contract Token {
         name = _name;
         symbol = _symbol;
         totalSupply = _totalSupply * (10 ** decimals);
+
+        balanceOf[msg.sender] = totalSupply;
+    }
+
+    function transfer(address _to, uint256 _value) public returns (bool success) {
+        require(balanceOf[msg.sender] >= _value, "Insufficient funds");
+        require(_to != address(0), "Transfering to zero address is not permitted");
+        balanceOf[msg.sender] -= _value;
+        balanceOf[_to] += _value;
+        emit Transfer(msg.sender, _to, _value);
+        return true;
+    }
+
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+        require(balanceOf[msg.sender] >= _value, "Insufficient funds");
+        require(_spender != address(0), "Approval of zero address is not permitted");
+        allowance[msg.sender][_spender] += _value;
+        emit Approval(msg.sender, _spender, _value);
+        return true;
     }
 }
