@@ -37,19 +37,38 @@ contract Token {
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
-        require(balanceOf[msg.sender] >= _value, "Insufficient funds");
-        require(_to != address(0), "Transfering to zero address is not permitted");
-        balanceOf[msg.sender] -= _value;
-        balanceOf[_to] += _value;
-        emit Transfer(msg.sender, _to, _value);
+        _transfer(msg.sender, _to, _value);
         return true;
     }
 
     function approve(address _spender, uint256 _value) public returns (bool success) {
-        require(balanceOf[msg.sender] >= _value, "Insufficient funds");
+        // was only a test, approve can exceed the current balance
+        //require(balanceOf[msg.sender] >= _value, "Insufficient funds");
         require(_spender != address(0), "Approval of zero address is not permitted");
         allowance[msg.sender][_spender] += _value;
         emit Approval(msg.sender, _spender, _value);
+        return true;
+    }
+
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        require(allowance[_from][msg.sender] >= _value, "Insufficient allowance");
+       
+        _transfer(_from, _to, _value);
+        allowance[_from][msg.sender] -= _value;
+
+        return true;
+    }
+
+
+    function _transfer(address _from, address _to, uint256 _value) internal returns (bool success) {
+        require(_to != address(0), "Transfering to zero address is not permitted");
+        require(balanceOf[_from] >= _value, "Insufficient funds");
+
+        balanceOf[_from] -= _value;
+        balanceOf[_to] += _value;
+
+        emit Transfer(_from, _to, _value);
+
         return true;
     }
 }

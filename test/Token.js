@@ -127,15 +127,15 @@ describe("Token", () => {
     });
 
     describe("Failing Approvals", () => {
-      it("Rejects approval if sender doesn't have sufficient funds", async () => {
-        const invalidAmount = tokens(10);
+      // it("Rejects approval if sender doesn't have sufficient funds", async () => {
+      //   const invalidAmount = tokens(10);
 
-        await expect(
-          token
-            .connect(receiver)
-            .approve(decentralizedExchange.address, invalidAmount)
-        ).to.be.revertedWith("Insufficient funds");
-      });
+      //   await expect(
+      //     token
+      //       .connect(receiver)
+      //       .approve(decentralizedExchange.address, invalidAmount)
+      //   ).to.be.revertedWith("Insufficient funds");
+      // });
 
       it("Rejects approval if spender is the zero address", async () => {
         const amount = tokens(10);
@@ -144,6 +144,88 @@ describe("Token", () => {
             .connect(deployer)
             .approve("0x0000000000000000000000000000000000000000", amount)
         ).to.be.revertedWith("Approval of zero address is not permitted");
+      });
+    });
+  });
+
+  describe("Delegated Token Transfers", () => {
+    let amount, transaction, receipt;
+
+    beforeEach(async () => {
+      amount = tokens(100);
+      await token
+        .connect(deployer)
+        .approve(decentralizedExchange.address, amount);
+    });
+
+    describe("Successful Delegated Token Transfers", () => {
+      beforeEach(async () => {
+        transaction = await token
+          .connect(decentralizedExchange)
+          .transferFrom(deployer.address, receiver.address, amount);
+        receipt = await transaction.wait();
+      });
+
+      it("Transfers Tokens", async () => {
+        expect(await token.balanceOf(deployer.address)).to.equal(
+          tokens(999900)
+        );
+        expect(await token.balanceOf(receiver.address)).to.equal(amount);
+      });
+
+      it("Emits Transfer event", async () => {
+        const event = receipt.events[0];
+        expect(event.event).to.equal("Transfer");
+
+        const args = event.args;
+        expect(args._from).to.equal(deployer.address);
+        expect(args._to).to.equal(receiver.address);
+        expect(args._value).to.equal(amount);
+      });
+
+      it("Resets the allowance", async () => {
+        expect(
+          await token.allowance(deployer.address, decentralizedExchange.address)
+        ).to.equal(0);
+      });
+    });
+
+    describe("Failing Delegated Token Transfers", () => {
+      it("Rejects tranfser if 'from' address doesn't have sufficient funds", async () => {
+        const invalidAmount = tokens(1000001);
+        await token
+          .connect(deployer)
+          .approve(decentralizedExchange.address, invalidAmount);
+        await expect(
+          token
+            .connect(decentralizedExchange)
+            .transferFrom(deployer.address, receiver.address, invalidAmount)
+        ).to.be.revertedWith("Insufficient funds");
+      });
+
+      it("Fails to transfer more tokens than allowance", async () => {
+        let invalidAmount = tokens(101);
+        await expect(
+          token
+            .connect(decentralizedExchange)
+            .transferFrom(deployer.address, receiver.address, invalidAmount)
+        ).to.be.revertedWith("Insufficient allowance");
+      });
+
+      it("Fails to transfer to zero address", async () => {
+        const amount = tokens(10);
+        await token
+          .connect(deployer)
+          .approve(decentralizedExchange.address, amount);
+        await expect(
+          token
+            .connect(decentralizedExchange)
+            .transferFrom(
+              deployer.address,
+              "0x0000000000000000000000000000000000000000",
+              amount
+            )
+        ).to.be.revertedWith("Transfering to zero address is not permitted");
       });
     });
   });
