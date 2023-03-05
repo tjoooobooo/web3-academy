@@ -37,7 +37,7 @@ contract Exchange {
     }
 
     function withdrawToken(address _tokenAddress, uint _amount) public {
-        require(tokens[_tokenAddress][msg.sender] >= _amount, "Insufficient balance");
+        //require(tokens[_tokenAddress][msg.sender] >= _amount, "Insufficient balance");
 
         Token(_tokenAddress).transfer(msg.sender, _amount);
         tokens[_tokenAddress][msg.sender] -= _amount;

@@ -95,14 +95,14 @@ describe("Exchange", () => {
     it("Withdraws tokens", async () => {
       // Ensure the tokens were transferred to the user
       expect(await token1.balanceOf(exchange.address)).to.equal(0);
-      expect(await token1.balanceOf(user1.address)).to.equal(amount);
+      expect(await token1.balanceOf(user1.address)).to.equal(tokens(100));
       // Expect exchange keeps track of the withdrawal
       expect(await exchange.balanceOf(token1.address, user1.address)).to.equal(
         0
       );
     });
 
-    xit("Emits a Withdraw Event", async () => {
+    it("Emits a Withdraw Event", async () => {
       const event = receipt.events[1];
 
       expect(event.event).to.equal("Withdraw");
