@@ -84,14 +84,12 @@ describe("Exchange", () => {
       // Approve Tokens
       await token1.connect(user1).approve(exchange.address, amount);
       // Deposit Tokens
-      await exchange
-        .connect(user1)
-        .depositToken(token1.address, amount);
+      await exchange.connect(user1).depositToken(token1.address, amount);
 
       const transaction = await exchange
-      .connect(user1)
-      .withdrawToken(token1.address, amount);
-    receipt = await transaction.wait();
+        .connect(user1)
+        .withdrawToken(token1.address, amount);
+      receipt = await transaction.wait();
     });
 
     it("Withdraws tokens", async () => {
