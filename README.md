@@ -1,13 +1,18 @@
-# Sample Hardhat Project
+# Web3 Academy Course by Marco Besier at https://membership.marcobesier.com/
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
-Try running some of the following tasks:
+## Start up for hardhat node & deploy + seed scripts
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
 npx hardhat node
-npx hardhat run scripts/deploy.js
+
+// new terminal 
+npx hardhat run --network localhost scripts/deploy.js
+
+// TODO improve that
+// manually get the deploy addresses and set them in the config.json
+npx hardhat run --network localhost scripts/seed_exchange.js
+
+// finally run webserver
+npm run start
 ```

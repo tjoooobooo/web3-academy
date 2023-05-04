@@ -24,6 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "start:contracts": "npx hardhat run --network localhost scripts/deploy.js && npx hardhat run --network localhost scripts/seed_exchange.js",
     "test": "npx hardhat test",
     "eject": "react-scripts eject"
   },
@@ -56,6 +57,7 @@
     "@types/chai": "^4.3.4",
     "@types/mocha": "^9.1.1",
     "chai": "^4.3.6",
+    "concurrently": "^8.0.1",
     "ethers": "^5.5.4",
     "hardhat": "^2.13.0",
     "hardhat-gas-reporter": "^1.0.9",
