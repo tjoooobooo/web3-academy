@@ -15,6 +15,11 @@ export const provider = (state = {}, action) => {
                 ...state,
                 account: action.account
             }
+        case "ETHER_BALANCE_LOADED":
+            return {
+                ...state,
+                balance: action.balance
+            }
         default:
             return state;
     }
@@ -41,3 +46,22 @@ export const tokens = (state = DEFAULT_TOKEN_STATE, action) => {
             return state;
     }
 }
+
+const DEFAULT_EXCHANGE_STATE = {
+    loaded: false,
+    contract: {},
+}
+
+export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
+    switch (action.type) {
+        case "EXCHANGE_LOADED":
+            return {
+                ...state,
+                loaded: true,
+                contract: action.exchange
+            }
+        default:
+            return state;
+    }
+}
+

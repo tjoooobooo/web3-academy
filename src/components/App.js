@@ -2,17 +2,16 @@ import { useEffect } from "react";
 // import EXCHANGE_ABI from "../abis/Exchange.json";
 import config from "../config.json";
 import {useDispatch} from "react-redux";
-import {loadAccount, loadNetwork, loadProvider, loadTokens} from "../store/interactions";
+import {loadAccount, loadExchange, loadNetwork, loadProvider, loadTokens} from "../store/interactions";
 
 function App() {
 
   const dispatch = useDispatch();
   const loadBlockchainData = async () => {
-    await loadAccount(dispatch);
-
     const provider = loadProvider(dispatch);
-
     const chainId = await loadNetwork(provider, dispatch);
+
+    await loadAccount(provider, dispatch);
 
     // Token smart contract
     await loadTokens(
@@ -24,6 +23,9 @@ function App() {
         ],
         dispatch
     );
+
+    // Exchange smart contract
+    await loadExchange(provider, config[chainId].exchange.address, dispatch);
 
   };
 
