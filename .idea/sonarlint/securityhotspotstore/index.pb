@@ -3,8 +3,6 @@ A
 scripts/deploy.js,f/2/f2bc22b6778542248840c9fa89b6d11cf9f87aff
 H
 scripts/seed_exchange.js,c/5/c50d8ab919f071ea016f137fba4d2fce049ad57e
-A
-package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
 @
 test/Exchange.js,9/c/9c1447656092f89942b0ef13f40cd3b4c3f56258
 B

@@ -1,6 +1,13 @@
 import logo from "../assets/logo.png";
+import {useSelector} from "react-redux";
 
 const Navbar = () => {
+
+    const account = useSelector(state => state.provider.account);
+    const balance = useSelector(state => state.provider.balance);
+
+    const accountString = account ? account.slice(0,5) + "..." + account.slice(38, 42) : "No account loaded";
+    const balanceString = balance ? Number(balance).toFixed(4) : "";
 
     return(
         <div className="exchange__header grid">
@@ -14,7 +21,8 @@ const Navbar = () => {
             </div>
 
             <div className="exchange__header--account flex">
-
+                <p><small>My Balance </small> {balanceString}</p>
+                <a href="">{accountString}</a>
             </div>
         </div>
     )
