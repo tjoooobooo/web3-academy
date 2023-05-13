@@ -3,13 +3,14 @@
 
 ## Start up for hardhat node & deploy + seed scripts
 
-```shell
+```shell 
+# NOTE: can be run with npm run dev.doStartUp 
+
 npx hardhat node
 
 // new terminal 
 npx hardhat run --network localhost scripts/deploy.js
 
-// TODO improve that
 // manually get the deploy addresses and set them in the config.json
 npx hardhat run --network localhost scripts/seed_exchange.js
 

@@ -19,12 +19,13 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "reselect": "^4.1.5",
+    "ttab": "^0.8.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "start:contracts": "npx hardhat run --network localhost scripts/deploy.js && npx hardhat run --network localhost scripts/seed_exchange.js",
+    "dev.doStartUp": "sh ./scripts/start.sh",
     "test": "npx hardhat test",
     "foundry-test": "forge test -vvv",
     "eject": "react-scripts eject"
