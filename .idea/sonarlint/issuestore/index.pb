@@ -1,6 +1,4 @@
 
-;
-src/App.css,a/a/aa7165aefcf8ee3d73539e99ab007daf1aa18d8d
 C
 src/abis/Token.json,d/3/d32d3808a064f85a772256f4eb603586e0d964ce
 F
@@ -11,20 +9,12 @@ I
 src/assets/down-arrow.svg,c/b/cbfaf75a84339c82aa00c264293b3051eacddeb5
 B
 src/assets/eth.svg,4/2/42e66f5ccb2ebe72c5c02ac977c7a5297324fdaf
-@
-test/Exchange.js,9/c/9c1447656092f89942b0ef13f40cd3b4c3f56258
-<
-src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
 O
 src/assets/right-arrow-blue.svg,8/d/8d62c64dad7b6b79c3302da9438330b904760230
 P
  src/assets/right-arrow-white.svg,4/0/40f624734868ed4fd33efd84947784efbd5fa0c0
-H
-scripts/seed_exchange.js,c/5/c50d8ab919f071ea016f137fba4d2fce049ad57e
 G
 src/assets/up-arrow.svg,2/3/231a544963bdac4519ad38db884f53a4dd63c404
-F
-contracts/Exchange.sol,a/5/a570bca4c615a09ef20cb4c2a636647a9ebf027a
 N
 out/console2.sol/console2.json,6/b/6b5082ffef6e7bbd6862eeb9ac40d98b23eac0b2
 L
@@ -185,3 +175,15 @@ H
 lib/forge-std/src/Vm.sol,6/2/62b232c18eb7ba39b9eab484105f1649b5005669
 F
 out/Vm.sol/VmSafe.json,8/0/807cc50544ee43b7630924b057d52f924dad87d2
+H
+test/foundry/Token.t.sol,6/2/6225a51692e0d54c9870cb9a42cbc3c8b1d0c4e6
+B
+src/store/store.js,8/b/8bb307fb6db380ef753f957624efd76a44e602c7
+A
+package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+;
+src/App.css,a/a/aa7165aefcf8ee3d73539e99ab007daf1aa18d8d
+<
+src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d

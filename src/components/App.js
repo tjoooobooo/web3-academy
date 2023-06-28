@@ -2,9 +2,18 @@ import { useEffect } from "react";
 // import EXCHANGE_ABI from "../abis/Exchange.json";
 import config from "../config.json";
 import {useDispatch} from "react-redux";
-import {loadAccount, loadExchange, loadNetwork, loadProvider, loadTokens} from "../store/interactions";
+import {
+    loadAccount,
+    loadExchange,
+    loadNetwork,
+    loadProvider,
+    loadTokens,
+    subscribeToEvents
+} from "../store/interactions";
 
 import Navbar from "./Navbar";
+import Markets from "./Markets";
+import Balance from "./Balance";
 
 function App() {
 
@@ -12,6 +21,14 @@ function App() {
     const loadBlockchainData = async () => {
         const provider = loadProvider(dispatch);
         const chainId = await loadNetwork(provider, dispatch);
+
+        window.ethereum.on('chainChanged', async () => {
+            window.location.reload();
+        });
+
+        window.ethereum.on('accountsChanges', async() => {
+            await loadAccount(provider, dispatch);
+        });
 
         await loadAccount(provider, dispatch);
 
@@ -26,9 +43,9 @@ function App() {
             dispatch
         );
 
-        // Exchange smart contract
-        await loadExchange(provider, config[chainId].exchange.address, dispatch);
-
+        const exchangeAddr = config[chainId].exchange.address;
+        const exchange = await loadExchange(provider, exchangeAddr, dispatch);
+        await subscribeToEvents(exchange, dispatch);
     };
 
     useEffect(() => {
@@ -41,9 +58,10 @@ function App() {
                 <Navbar/>
                 <main className="exchange grid">
                     <section className="exchange__section--left grid">
-                        {/* Markets */}
 
-                        {/* Balance */}
+                        <Markets/>
+
+                        <Balance/>
 
                         {/* Order */}
                     </section>
