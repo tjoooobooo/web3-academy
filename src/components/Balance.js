@@ -51,11 +51,25 @@ const Balance = () => {
 
         if (token.address === tokenContracts[0].address) {
             // transfer tokens
-            transferTokens(provider, exchange, "deposit", token, token1TransferAmount, dispatch);
+            transferTokens(
+                provider,
+                exchange,
+                isDeposit ? "deposit" : "withdraw",
+                token,
+                token1TransferAmount,
+                dispatch
+            );
             setToken1TransferAmount(0);
         } else if (token.address === tokenContracts[1].address) {
             // transfer tokens
-            transferTokens(provider, exchange, "deposit", token, token2TransferAmount, dispatch);
+            transferTokens(
+                provider,
+                exchange,
+                isDeposit ? "deposit" : "withdraw",
+                token,
+                token2TransferAmount,
+                dispatch
+            );
             setToken2TransferAmount(0);
         }
     }
