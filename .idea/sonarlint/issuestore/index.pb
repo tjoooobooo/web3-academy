@@ -3,8 +3,6 @@ C
 src/abis/Token.json,d/3/d32d3808a064f85a772256f4eb603586e0d964ce
 F
 src/abis/Exchange.json,1/b/1b034178e3265a30badcd55cd3a7cc63b2fc1b45
-A
-scripts/deploy.js,f/2/f2bc22b6778542248840c9fa89b6d11cf9f87aff
 I
 src/assets/down-arrow.svg,c/b/cbfaf75a84339c82aa00c264293b3051eacddeb5
 B
@@ -187,3 +185,13 @@ A
 src/App.css,a/a/aa7165aefcf8ee3d73539e99ab007daf1aa18d8d
 <
 src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
+@
+test/Exchange.js,9/c/9c1447656092f89942b0ef13f40cd3b4c3f56258
+E
+src/components/App.js,0/5/053473e2f24e57d32f5be5bef4b8a7dd7f571c70
+I
+src/components/Markets.js,a/0/a05e714c810142b10687dd269b6238eff96a1862
+H
+src/components/Navbar.js,2/d/2d4879a2b825dad8d007f4486bb3dca97c81dd6d
+@
+scripts/start.sh,1/a/1a790e8df66ff79834187100aa54d881719ccd82

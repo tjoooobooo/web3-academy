@@ -1,4 +1,5 @@
 const { ethers } = require("hardhat");
+const fs = require("fs");
 
 async function main() {
   console.log("Preparing deployment...");
@@ -21,11 +22,25 @@ async function main() {
 
   const exchange = await exchangeContract.deploy(accounts[1].address, 10);
 
-  console.log(`Exchange deployed at: ${exchange.address}`);
+  const config = require("../src/config.json");
 
+  console.log(`Exchange deployed at: ${exchange.address}`);
   console.log(`MT deployed at: ${MT.address}`);
   console.log(`mETH deployed at: ${mETH.address}`);
   console.log(`mDAI deployed at: ${mDAI.address}`);
+
+  config["31337"].exchange.address = exchange.address;
+  config["31337"].MT.address = MT.address;
+  config["31337"].mETH.address = mETH.address;
+  config["31337"].mDAI.address = mDAI.address;
+
+  fs.writeFile("./src/config.json", JSON.stringify(config, null, 2), (err) => {
+    if (err) {
+      console.log('Failed to write updated data to file: ' + err.message);
+      return;
+    }
+    console.log('config.json successfully updated!');
+  });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
