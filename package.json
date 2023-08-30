@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev.doStartUp": "sh ./scripts/start.sh",
+    "dev": "sh ./scripts/start.sh",
     "test": "npx hardhat test",
     "foundry-test": "forge test -vvv",
     "eject": "react-scripts eject"

@@ -163,8 +163,6 @@ X
 (lib/forge-std/lib/ds-test/src/test.t.sol,f/d/fda6352bdc450032ec95985b6459c8429adfe289
 J
 out/Base.sol/TestBase.json,2/b/2b5935791b9364d0508017d92881f871ca80855e
-H
-out/Token.sol/Token.json,b/5/b561e83473765b0602384b8e0a5a8dfcf34cbc87
 N
 out/Token.t.sol/TokenTest.json,9/3/932053a70827f3a306e789bfa20ba8c0177ed03d
 B
@@ -175,8 +173,6 @@ F
 out/Vm.sol/VmSafe.json,8/0/807cc50544ee43b7630924b057d52f924dad87d2
 H
 test/foundry/Token.t.sol,6/2/6225a51692e0d54c9870cb9a42cbc3c8b1d0c4e6
-B
-src/store/store.js,8/b/8bb307fb6db380ef753f957624efd76a44e602c7
 A
 package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
 9
@@ -187,11 +183,13 @@ A
 src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
 @
 test/Exchange.js,9/c/9c1447656092f89942b0ef13f40cd3b4c3f56258
-E
-src/components/App.js,0/5/053473e2f24e57d32f5be5bef4b8a7dd7f571c70
 I
 src/components/Markets.js,a/0/a05e714c810142b10687dd269b6238eff96a1862
 H
 src/components/Navbar.js,2/d/2d4879a2b825dad8d007f4486bb3dca97c81dd6d
+A
+scripts/deploy.js,f/2/f2bc22b6778542248840c9fa89b6d11cf9f87aff
+H
+out/Token.sol/Token.json,b/5/b561e83473765b0602384b8e0a5a8dfcf34cbc87
 @
 scripts/start.sh,1/a/1a790e8df66ff79834187100aa54d881719ccd82

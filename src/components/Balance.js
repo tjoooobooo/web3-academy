@@ -2,8 +2,6 @@ import eth from "../assets/eth.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
 import {loadBalances, transferTokens} from "../store/interactions";
-import _ from "lodash";
-import {Contract} from "ethers";
 
 const Balance = () => {
     const [isDeposit, setIsDeposit] = useState(true);

@@ -55,8 +55,6 @@ N
 out/Exchange.sol/Exchange.json,7/9/792c7568a28a572812465d9018f342a20c9d09c0
 N
 out/StdError.sol/stdError.json,e/a/ea52b262365640964134e7b1fad8c36cd0971dd8
-H
-out/Token.sol/Token.json,b/5/b561e83473765b0602384b8e0a5a8dfcf34cbc87
 L
 out/console.sol/console.json,e/5/e52e90853a68febfdc119cf85012788e66bcc59e
 U
@@ -175,8 +173,6 @@ W
 'lib/forge-std/src/interfaces/IERC20.sol,a/e/ae229b3a5afa035a525377074bf9aa16787f6c4e
 H
 test/foundry/Token.t.sol,6/2/6225a51692e0d54c9870cb9a42cbc3c8b1d0c4e6
-B
-src/store/store.js,8/b/8bb307fb6db380ef753f957624efd76a44e602c7
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 A
@@ -189,9 +185,11 @@ A
 test/Exchange.js,9/c/9c1447656092f89942b0ef13f40cd3b4c3f56258
 H
 src/components/Navbar.js,2/d/2d4879a2b825dad8d007f4486bb3dca97c81dd6d
-E
-src/components/App.js,0/5/053473e2f24e57d32f5be5bef4b8a7dd7f571c70
 I
 src/components/Markets.js,a/0/a05e714c810142b10687dd269b6238eff96a1862
+A
+scripts/deploy.js,f/2/f2bc22b6778542248840c9fa89b6d11cf9f87aff
+H
+out/Token.sol/Token.json,b/5/b561e83473765b0602384b8e0a5a8dfcf34cbc87
 @
 scripts/start.sh,1/a/1a790e8df66ff79834187100aa54d881719ccd82
