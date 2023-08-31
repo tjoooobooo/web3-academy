@@ -175,8 +175,6 @@ H
 test/foundry/Token.t.sol,6/2/6225a51692e0d54c9870cb9a42cbc3c8b1d0c4e6
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-A
-package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
 ;
 src/App.css,a/a/aa7165aefcf8ee3d73539e99ab007daf1aa18d8d
 <
@@ -193,3 +191,21 @@ H
 out/Token.sol/Token.json,b/5/b561e83473765b0602384b8e0a5a8dfcf34cbc87
 @
 scripts/start.sh,1/a/1a790e8df66ff79834187100aa54d881719ccd82
+C
+contracts/Token.sol,7/9/79463609ff3d8a3e66c853332345bf164d5c34e0
+F
+contracts/Exchange.sol,a/5/a570bca4c615a09ef20cb4c2a636647a9ebf027a
+B
+src/store/store.js,8/b/8bb307fb6db380ef753f957624efd76a44e602c7
+H
+scripts/seed_exchange.js,c/5/c50d8ab919f071ea016f137fba4d2fce049ad57e
+I
+src/store/interactions.js,c/d/cd665bd98aab92fceaeeb48c255f4265536a932a
+E
+src/store/reducers.js,5/f/5fae2bbd83a46440fc93336e62ba3d22b2a5dfb4
+G
+src/components/Order.js,1/7/17441033d796871a7387e40b6adcbfd64824f1bf
+?
+src/config.json,1/5/15854bb039f5ff793f308f0d5599d1c950914088
+I
+src/components/Balance.js,8/3/83c943050861632eda59073f821716decf9b0bb7
