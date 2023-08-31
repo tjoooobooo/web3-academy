@@ -26,19 +26,8 @@ export const orderBookSelector = createSelector(
     openOrders,
     tokens,
     (orders, tokens) => {
-        if (!tokens[0] || !tokens[1]) {
-            return;
-        }
-
-        // Filter orders by selected tokens
-        orders = orders.filter(
-            (o) =>
-                o._tokenGet === tokens[0].address || o._tokenGet === tokens[1].address
-        );
-        orders = orders.filter(
-            (o) =>
-                o._tokenGive === tokens[0].address || o._tokenGive === tokens[1].address
-        );
+        orders = filterOrdersByTokens(orders, tokens);
+        if (!orders) return;
 
         // Decorate orders
         orders = decorateOrderBookOrders(orders, tokens);
@@ -116,20 +105,8 @@ export const priceChartSelector = createSelector(
     filledOrders,
     tokens,
     (orders, tokens) => {
-        if (!tokens[0] || !tokens[1]) {
-            return;
-        }
-
-        // Filter orders by selected tokens
-        // Filter orders by selected tokens
-        orders = orders.filter(
-            (o) =>
-                o._tokenGet === tokens[0].address || o._tokenGet === tokens[1].address
-        );
-        orders = orders.filter(
-            (o) =>
-                o._tokenGive === tokens[0].address || o._tokenGive === tokens[1].address
-        );
+        orders = filterOrdersByTokens(orders, tokens);
+        if (!orders) return;
 
         // Sort orders by date ascending
         orders = orders.sort((a, b) => a._timestamp - b._timestamp);
@@ -186,3 +163,67 @@ const buildGraphData = (orders) => {
     return graphData;
 }
 
+export const filterOrdersByTokens = (orders, tokens) => {
+    if (!tokens[0] || !tokens[1]) {
+        return undefined;
+    }
+
+    // Filter orders by selected tokens
+    orders = orders.filter(
+        (o) =>
+            o._tokenGet === tokens[0].address || o._tokenGet === tokens[1].address
+    );
+    orders = orders.filter(
+        (o) =>
+            o._tokenGive === tokens[0].address || o._tokenGive === tokens[1].address
+    );
+
+    return orders;
+}
+
+export const filledOrderSelector = createSelector(
+    filledOrders,
+    tokens,
+    (orders, tokens) => {
+        orders = filterOrdersByTokens(orders, tokens);
+        if (!orders) return;
+
+        // Sort orders by date ascending
+        orders = orders.sort((a, b) => a._timestamp - b._timestamp);
+
+        console.log(orders);
+
+        orders = decorateFilledOrders(orders, tokens);
+        orders = orders.sort((a, b) => b._timestamp - a._timestamp);
+
+        return orders;
+    }
+);
+
+const decorateFilledOrders = (orders, tokens) => {
+    let previousOrder = orders[0];
+
+    return (
+        orders.map((order) => {
+            order = decorateOrder(order, tokens);
+            order = decorateFilledOrder(order, previousOrder);
+            previousOrder = order; // update prev order
+            return order;
+        })
+    )
+}
+
+const decorateFilledOrder = (order, previousOrder) => {
+    return ({
+        ...order,
+        _tokenPriceClass: tokenPriceClass(order._tokenPrice, order._id, previousOrder)
+    });
+}
+
+const tokenPriceClass = (tokenPrice, orderId, previousOrder) => {
+    if (orderId === previousOrder._id) {
+        return GREEN;
+    }
+
+    return previousOrder._tokenPrice <= tokenPrice ? GREEN : RED;
+}
