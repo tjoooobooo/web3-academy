@@ -65,7 +65,7 @@ export const tokens = (state = DEFAULT_TOKEN_STATE, action) => {
 const DEFAULT_EXCHANGE_STATE = {
     loaded: false,
     contract: undefined,
-    transactions: {
+    transaction: {
         isSuccessful: false,
     },
     cancelledOrders: {
@@ -130,7 +130,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
         case "TRANSFER_REQUEST":
             return {
                 ...state,
-                transactions: {
+                transaction: {
                     transactionType: "Transfer",
                     isPending: true,
                     isSuccessful: false,
@@ -140,18 +140,18 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
         case "TRANSFER_SUCCESS":
             return {
                 ...state,
-                transactions: {
+                transaction: {
                     transactionType: "Transfer",
                     isPending: false,
                     isSuccessful: true,
                 },
                 transferInProgress: false,
-                events: [action.events, ...state.events],
+                events: [action.event, ...state.events],
             };
         case "TRANSFER_FAIL":
             return {
                 ...state,
-                transactions: {
+                transaction: {
                     transactionType: "Transfer",
                     isPending: false,
                     isSuccessful: false,
@@ -162,7 +162,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
         case "NEW_ORDER_REQUEST":
             return {
                 ...state,
-                transactions: {
+                transaction: {
                     transactionType: "New Order",
                     isPending: true,
                     isSuccessful: false,
@@ -171,7 +171,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
         case "NEW_ORDER_FAIL":
             return {
                 ...state,
-                transactions: {
+                transaction: {
                     transactionType: "New Order",
                     isPending: false,
                     isSuccessful: false,
@@ -195,12 +195,12 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
                     ...state.allOrders,
                     data: data,
                 },
-                transactions: {
+                transaction: {
                     transactionType: "New Order",
                     isPending: false,
                     isSuccessful: true,
                 },
-                events: [action.events, ...state.events],
+                events: [action.event, ...state.events],
             };
 
         case "ORDER_CANCEL_REQUEST":

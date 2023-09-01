@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {orderBookSelector} from "../store/selectors";
-import {cancelOrder, fillOrder} from "../store/interactions";
+import {fillOrder} from "../store/interactions";
 
 const OrderBook = () => {
     const symbols = useSelector((state) => state.tokens.symbols);

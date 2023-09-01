@@ -3,6 +3,7 @@ import {get, groupBy, maxBy, minBy, reject} from "lodash";
 import moment from "moment";
 import {createSelector} from "reselect";
 
+const events = (state) => get(state, "exchange.events");
 const tokens = (state) => get(state, "tokens.contracts");
 const account = (state) => get(state, "provider.account");
 const allOrders = (state) => get(state, "exchange.allOrders.data", []);
@@ -334,3 +335,13 @@ const decorateMyFilledOrder = (order, account, tokens) => {
         _orderSign: orderType === "buy" ? "+" : "-",
     });
 }
+
+export const myEventsSelector = createSelector(
+    account,
+    events,
+    (account, events) => {
+        console.log(events);
+        events = events.filter((e) => !!e && e.args._user === account);
+        return events;
+    }
+)
