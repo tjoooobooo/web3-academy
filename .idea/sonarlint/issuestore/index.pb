@@ -181,10 +181,6 @@ H
 src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
 @
 test/Exchange.js,9/c/9c1447656092f89942b0ef13f40cd3b4c3f56258
-I
-src/components/Markets.js,a/0/a05e714c810142b10687dd269b6238eff96a1862
-H
-src/components/Navbar.js,2/d/2d4879a2b825dad8d007f4486bb3dca97c81dd6d
 A
 scripts/deploy.js,f/2/f2bc22b6778542248840c9fa89b6d11cf9f87aff
 H
@@ -199,13 +195,7 @@ F
 contracts/Exchange.sol,a/5/a570bca4c615a09ef20cb4c2a636647a9ebf027a
 H
 scripts/seed_exchange.js,c/5/c50d8ab919f071ea016f137fba4d2fce049ad57e
-I
-src/components/Balance.js,8/3/83c943050861632eda59073f821716decf9b0bb7
 ?
 src/config.json,1/5/15854bb039f5ff793f308f0d5599d1c950914088
-I
-src/store/interactions.js,c/d/cd665bd98aab92fceaeeb48c255f4265536a932a
 G
 src/components/Order.js,1/7/17441033d796871a7387e40b6adcbfd64824f1bf
-E
-src/store/reducers.js,5/f/5fae2bbd83a46440fc93336e62ba3d22b2a5dfb4
