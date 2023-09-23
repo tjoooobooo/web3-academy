@@ -15,12 +15,18 @@ async function main() {
     `Accounts fetched:\n${accounts[0].address}\n${accounts[1].address}\n`
   );
 
+  console.log("starting deployment...");
+
   // Deploy the contract
   const MT = await tokenContract.deploy("My Token", "MT", 1000000);
   const mETH = await tokenContract.deploy("Mock Ether", "ME", 1000000);
   const mDAI = await tokenContract.deploy("Mock Dai", "MD", 1000000);
 
+  console.log("deployed tokens...");
+
   const exchange = await exchangeContract.deploy(accounts[1].address, 10);
+
+  console.log("deployed exchange...");
 
   const config = require("../src/config.json");
 
